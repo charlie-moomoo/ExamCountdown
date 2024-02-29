@@ -1,0 +1,60 @@
+<title>段考倒數計時器</title>
+<script src="./moment.min.js"></script>
+<style type="text/css">
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=距離第?次段考還有天時分秒期間: /~已結束!還剩下一二三0123456789");
+  * {
+    font-family: "Noto Sans TC", sans-serif;
+    overflow: hidden;
+  }
+</style>
+<link rel="icon" href="favicon.ico" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="bookmark" href="favicon.ico" />
+<table width="100%" height="100%">
+<tr>
+<td>
+<center>
+<h2 id="top">距離第?次段考還有</h2>
+<h1 id="countdown">??天 ??時 ??分 ??秒</h1>
+<h2 id="period">段考期間: ????/??/?? ??:??~????/??/?? ??:??</h2>
+</center>
+</td>
+</tr>
+</table>
+<script>
+  const examName = "一"
+  const timestamps = { start: "1711583400", end: "1711699800" }
+  /*const timestamps = {
+      start: moment().add("10", "seconds").unix(),
+      end: moment().add("15", "seconds").unix(),
+  }*/
+  document.title = `第${examName}次段考倒數計時`
+  document.querySelector("#top").innerHTML = `距離第${examName}次段考還有`
+  document.querySelector("#period").innerHTML = `段考期間: ${moment
+    .unix(timestamps.start)
+    .format("YYYY/MM/DD HH:mm")} ~ ${moment
+    .unix(timestamps.end)
+    .format("YYYY/MM/DD HH:mm")}`
+  setInterval(() => {
+    const now = moment().unix()
+    if (now > timestamps.end) {
+      document.querySelector("#top").innerHTML = `第${examName}次段考`
+      document.querySelector("#countdown").innerHTML = "已結束!"
+    } else if (now > timestamps.start) {
+      document.querySelector("#top").innerHTML = `第${examName}次段考還剩下`
+      const seconds = timestamps.end - now
+      document.querySelector("#countdown").innerHTML = `${Math.floor(
+        seconds / (60 * 60 * 24)
+      )}天 ${Math.floor((seconds % (60 * 60 * 24)) / (60 * 60))}時 ${Math.floor(
+        ((seconds % (60 * 60 * 24)) % (60 * 60)) / 60
+      )}分 ${Math.floor(((seconds % (60 * 60 * 24)) % (60 * 60)) % 60)}秒`
+    } else {
+      const seconds = timestamps.start - now
+      document.querySelector("#countdown").innerHTML = `${Math.floor(
+        seconds / (60 * 60 * 24)
+      )}天 ${Math.floor((seconds % (60 * 60 * 24)) / (60 * 60))}時 ${Math.floor(
+        ((seconds % (60 * 60 * 24)) % (60 * 60)) / 60
+      )}分 ${Math.floor(((seconds % (60 * 60 * 24)) % (60 * 60)) % 60)}秒`
+    }
+  })
+</script>
