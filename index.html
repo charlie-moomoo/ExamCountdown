@@ -42,4 +42,12 @@
     document.querySelector("#settings").style.color = "white";
     document.querySelector("body").style.backgroundColor = "black";
   }
+  if (localStorage.getItem("lang") == "en") {
+    document.querySelector("iframe").src = "/assets/translate/first_en.html";
+    var request = new XMLHttpRequest();
+    request.open("GET", "/assets/translate/en.json", false);
+    request.send(null);
+    var translations = JSON.parse(request.responseText);
+    document.title = `${translations.index.title} | ExamCountdown`;
+  }
 </script>

@@ -1,0 +1,12 @@
+{
+  "index": {
+    "title": "Countdown Timers For Every Exam"
+  },
+  "settings": {
+    "title": "Settings",
+    "dark": "Dark Mode",
+    "sound": "Sound Effects",
+    "lang": "Language",
+    "save": "Save Settings"
+  }
+}

@@ -1,7 +1,7 @@
-<title>段考倒數計時器 | ExamCountdown</title>
+<title>Exam Countdown Timer | ExamCountdown</title>
 <script src="/assets/moment.min.js"></script>
 <style type="text/css">
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=距離第?次段考還有天時分秒期間: /~已結束!還剩下一二三0123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=?: /~!0123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
   * {
     font-family: "Noto Sans TC", sans-serif;
     overflow: hidden;
@@ -14,47 +14,47 @@
   <tr>
     <td>
       <center>
-        <h2 id="top">距離第?次段考還有</h2>
-        <h1 id="countdown">??天 ??時 ??分 ??秒</h1>
-        <h2 id="period">段考期間: ????/??/?? ??:??~????/??/?? ??:??</h2>
+        <h2 id="top">There are</h2>
+        <h1 id="countdown">?? Days, ?? Hours, ?? Minutes, and ?? Seconds left until The ? Exam.</h1>
+        <h2 id="period">The period for the exam is from ????/??/?? ??:?? to ????/??/?? ??:??.</h2>
       </center>
     </td>
   </tr>
 </table>
 <script>
-  const examName = "一";
+  const examName = "First";
   const timestamps = { start: "1711583400", end: "1711699800" };
   /*const timestamps = {
       start: moment().add("10", "seconds").unix(),
       end: moment().add("15", "seconds").unix(),
   }*/
-  document.title = `第${examName}次段考倒數計時 | ExamCountdown`;
-  document.querySelector("#top").innerHTML = `距離第${examName}次段考還有`;
-  document.querySelector("#period").innerHTML = `段考期間: ${moment
+  document.title = `Countdown For The ${examName} Exam | ExamCountdown`;
+  //document.querySelector("#top").innerHTML = `距離第${examName}次段考還有`;
+  document.querySelector("#period").innerHTML = `The period for the exam is from ${moment
     .unix(timestamps.start)
-    .format("YYYY/MM/DD HH:mm")} ~ ${moment
+    .format("YYYY/MM/DD HH:mm")} to ${moment
     .unix(timestamps.end)
-    .format("YYYY/MM/DD HH:mm")}`;
+    .format("YYYY/MM/DD HH:mm")}.`;
   setInterval(() => {
     const now = moment().unix();
     if (now > timestamps.end) {
-      document.querySelector("#top").innerHTML = `第${examName}次段考`;
-      document.querySelector("#countdown").innerHTML = "已結束!";
+      document.querySelector("#top").innerHTML = `The ${examName} Exam`;
+      document.querySelector("#countdown").innerHTML = "Has ended!";
     } else if (now > timestamps.start) {
-      document.querySelector("#top").innerHTML = `第${examName}次段考還剩下`;
+      document.querySelector("#top").innerHTML = `The ${examName} Exam has`;
       const seconds = timestamps.end - now;
       document.querySelector("#countdown").innerHTML = `${Math.floor(
         seconds / (60 * 60 * 24)
-      )}天 ${Math.floor((seconds % (60 * 60 * 24)) / (60 * 60))}時 ${Math.floor(
+      )} Days, ${Math.floor((seconds % (60 * 60 * 24)) / (60 * 60))} Hours, ${Math.floor(
         ((seconds % (60 * 60 * 24)) % (60 * 60)) / 60
-      )}分 ${Math.floor(((seconds % (60 * 60 * 24)) % (60 * 60)) % 60)}秒`;
+      )} Minutes, and ${Math.floor(((seconds % (60 * 60 * 24)) % (60 * 60)) % 60)} Seconds left.`;
     } else {
       const seconds = timestamps.start - now;
       document.querySelector("#countdown").innerHTML = `${Math.floor(
         seconds / (60 * 60 * 24)
-      )}天 ${Math.floor((seconds % (60 * 60 * 24)) / (60 * 60))}時 ${Math.floor(
+      )} Days, ${Math.floor((seconds % (60 * 60 * 24)) / (60 * 60))} Hours, ${Math.floor(
         ((seconds % (60 * 60 * 24)) % (60 * 60)) / 60
-      )}分 ${Math.floor(((seconds % (60 * 60 * 24)) % (60 * 60)) % 60)}秒`;
+      )} Minutes, and ${Math.floor(((seconds % (60 * 60 * 24)) % (60 * 60)) % 60)} Seconds left until The ${examName} Exam.`;
     }
   });
   if (localStorage.getItem("sound") != "false") {

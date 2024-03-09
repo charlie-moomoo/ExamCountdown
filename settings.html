@@ -4,7 +4,7 @@
 <link rel="bookmark" href="/favicon.ico" />
 <link rel="stylesheet" href="/assets/fa/css/font-awesome.min.css" />
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=ExamCountdownv0.123456789()hrlieMm");
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=ExamCountdownv0.123456789()ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
   * {
     border: 0;
     font-family: "Noto Sans TC", sans-serif;
@@ -26,11 +26,11 @@
     <td>
       <center>
         <fieldset id="options">
-          <input type="checkbox" name="dark" id="dark" /><label for="dark"
+          <input type="checkbox" name="dark" id="dark" /><label id="darks" for="dark"
             >深色模式</label
           ><br />
-          <input type="checkbox" name="sound" id="sound" /><label for="sound"
-            >音效</label
+          <input type="checkbox" name="sound" id="sound" /><label id="sounds" for="sound"
+            >音效 </label
           >
           <select id="sounddrop">
             <option value="Clock Ticking">Clock Ticking</option>
@@ -39,7 +39,7 @@
             <option value="Collect">Collect</option>
             <option value="Boing">Boing</option></select
           ><br />
-          <label for="lang">語言</label
+          <label for="lang" id="langs">語言 </label
           ><select id="lang" name="lang">
             <option value="zh">中文</option>
             <option value="en">English</option></select
@@ -49,7 +49,7 @@
             onclick="save()"
             type="submit"
             name="submit"
-            value="儲存"
+            value="儲存設定"
           />
         </fieldset>
       </center>
@@ -87,5 +87,16 @@
     document.querySelector("body").style.backgroundColor = "black";
     document.querySelector("body").style.color = "white";
     document.querySelector("#back").style.color = "white";
+  }
+  if (localStorage.getItem("lang") == "en") {
+    var request = new XMLHttpRequest();
+   request.open("GET", "/assets/translate/en.json", false);
+   request.send(null)
+   var translations = JSON.parse(request.responseText);
+    document.title = `${translations.settings.title} | ExamCountdown`
+    document.querySelector("#darks").innerHTML = translations.settings.dark
+    document.querySelector("#sounds").innerHTML = translations.settings.sound
+    document.querySelector("#langs").innerHTML = translations.settings.lang
+    document.querySelector("#submit").value = translations.settings.save
   }
 </script>
