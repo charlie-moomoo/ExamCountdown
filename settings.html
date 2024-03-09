@@ -26,12 +26,16 @@
     <td>
       <center>
         <fieldset id="options">
-          <input type="checkbox" name="dark" id="dark" /><label id="darks" for="dark"
+          <input type="checkbox" name="dark" id="dark" /><label
+            id="darks"
+            for="dark"
             >深色模式</label
           ><br />
-          <input type="checkbox" name="sound" id="sound" /><label id="sounds" for="sound"
-            >音效 </label
-          >
+          <input type="checkbox" name="sound" id="sound" /><label
+            id="sounds"
+            for="sound"
+            >音效
+          </label>
           <select id="sounddrop">
             <option value="Clock Ticking">Clock Ticking</option>
             <option value="Connect">Connect</option>
@@ -60,7 +64,10 @@
   document.querySelector("#dark").checked =
     localStorage.getItem("dark") == "true" ? true : false | false;
   document.querySelector("#sound").checked =
-    localStorage.getItem("sound") == "false" ? false : true | false;
+    localStorage.getItem("sound") == "false" ||
+    localStorage.getItem("sound") == null
+      ? false
+      : true | false;
   document.querySelector("#sounddrop").value =
     localStorage.getItem("sound") != "false"
       ? localStorage.getItem("sound")
@@ -90,13 +97,13 @@
   }
   if (localStorage.getItem("lang") == "en") {
     var request = new XMLHttpRequest();
-   request.open("GET", "/assets/translate/en.json", false);
-   request.send(null)
-   var translations = JSON.parse(request.responseText);
-    document.title = `${translations.settings.title} | ExamCountdown`
-    document.querySelector("#darks").innerHTML = translations.settings.dark
-    document.querySelector("#sounds").innerHTML = translations.settings.sound
-    document.querySelector("#langs").innerHTML = translations.settings.lang
-    document.querySelector("#submit").value = translations.settings.save
+    request.open("GET", "/assets/translate/en.json", false);
+    request.send(null);
+    var translations = JSON.parse(request.responseText);
+    document.title = `${translations.settings.title} | ExamCountdown`;
+    document.querySelector("#darks").innerHTML = translations.settings.dark;
+    document.querySelector("#sounds").innerHTML = translations.settings.sound;
+    document.querySelector("#langs").innerHTML = translations.settings.lang;
+    document.querySelector("#submit").value = translations.settings.save;
   }
 </script>
