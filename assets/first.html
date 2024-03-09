@@ -67,4 +67,8 @@
       }, 1000);
     }, 1000 - new Date().getMilliseconds());
   }
+  if (localStorage.getItem("dark") == "true") {
+    document.querySelector("body").style.backgroundColor = "black";
+    document.querySelector("body").style.color = "white";
+  }
 </script>

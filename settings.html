@@ -66,14 +66,12 @@
       ? localStorage.getItem("sound")
       : "Clock Ticking" | "Clock Ticking";
   document.querySelector("#lang").value = localStorage.getItem("lang");
-
   setInterval(() => {
     document.querySelector("#sounddrop").disabled =
       !document.querySelector("#sound").checked;
     if (document.querySelector("#sounddrop").disabled)
       document.querySelector("#sounddrop").value = "Clock Ticking";
   });
-
   const save = () => {
     localStorage.setItem("dark", document.querySelector("#dark").checked);
     localStorage.setItem(
@@ -83,5 +81,11 @@
         : document.querySelector("#sounddrop").value
     );
     localStorage.setItem("lang", document.querySelector("#lang").value);
+    location.reload();
   };
+  if (localStorage.getItem("dark") == "true") {
+    document.querySelector("body").style.backgroundColor = "black";
+    document.querySelector("body").style.color = "white";
+    document.querySelector("#back").style.color = "white";
+  }
 </script>
