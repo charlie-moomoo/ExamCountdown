@@ -1,7 +1,8 @@
-<title>各種考試倒數計時</title>
-<link rel="icon" href="favicon.ico" />
-<link rel="shortcut icon" href="favicon.ico" />
-<link rel="bookmark" href="favicon.ico" />
+<title>各種考試倒數計時 | ExamCountdown</title>
+<link rel="icon" href="/favicon.ico" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="bookmark" href="/favicon.ico" />
+<link rel="stylesheet" href="/assets/fa/css/font-awesome.min.css" />
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=ExamCountdownv0.123456789()hrlieMm");
   * {
@@ -15,10 +16,23 @@
     color: black;
     opacity: 0.5;
   }
+  #settings {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    color: black;
+    opacity: 0.5;
+    cursor: pointer;
+  }
 </style>
+<div id="settings" onclick="window.location.replace('/settings.html')">
+  <i class="fa fa-cog fa-2x"></i>
+</div>
 <table width="100%" height="100%">
-<tr>
-<td><iframe width="100%" height="100%" src="first.html"></iframe></td>
-</tr>
+  <tr>
+    <td>
+      <iframe width="100%" height="100%" src="/assets/first.html"></iframe>
+    </td>
+  </tr>
 </table>
-<div id="version">ExamCountdown v1.3<br/>(C) 2024 CharlieMoomoo</div>
+<div id="version">ExamCountdown v1.4<br />(C) 2024 CharlieMoomoo</div>

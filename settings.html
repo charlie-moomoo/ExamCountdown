@@ -1,0 +1,87 @@
+<title>設定 | ExamCountdown</title>
+<link rel="icon" href="/favicon.ico" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="bookmark" href="/favicon.ico" />
+<link rel="stylesheet" href="/assets/fa/css/font-awesome.min.css" />
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=ExamCountdownv0.123456789()hrlieMm");
+  * {
+    border: 0;
+    font-family: "Noto Sans TC", sans-serif;
+  }
+  #back {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    color: black;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+</style>
+<div id="back" onclick="window.location.replace('/')">
+  <i class="fa fa-arrow-left fa-2x"></i>
+</div>
+<table width="100%" height="100%">
+  <tr>
+    <td>
+      <center>
+        <fieldset id="options">
+          <input type="checkbox" name="dark" id="dark" /><label for="dark"
+            >深色模式</label
+          ><br />
+          <input type="checkbox" name="sound" id="sound" /><label for="sound"
+            >音效</label
+          >
+          <select id="sounddrop">
+            <option value="Clock Ticking">Clock Ticking</option>
+            <option value="Connect">Connect</option>
+            <option value="Coin">Coin</option>
+            <option value="Collect">Collect</option>
+            <option value="Boing">Boing</option></select
+          ><br />
+          <label for="lang">語言</label
+          ><select id="lang" name="lang">
+            <option value="zh">中文</option>
+            <option value="en">English</option></select
+          ><br />
+          <input
+            id="submit"
+            onclick="save()"
+            type="submit"
+            name="submit"
+            value="儲存"
+          />
+        </fieldset>
+      </center>
+    </td>
+  </tr>
+</table>
+<script>
+  document.querySelector("#dark").checked =
+    localStorage.getItem("dark") == "true" ? true : false | false;
+  document.querySelector("#sound").checked =
+    localStorage.getItem("sound") == "false" ? false : true | false;
+  document.querySelector("#sounddrop").value =
+    localStorage.getItem("sound") != "false"
+      ? localStorage.getItem("sound")
+      : "Clock Ticking" | "Clock Ticking";
+  document.querySelector("#lang").value = localStorage.getItem("lang");
+
+  setInterval(() => {
+    document.querySelector("#sounddrop").disabled =
+      !document.querySelector("#sound").checked;
+    if (document.querySelector("#sounddrop").disabled)
+      document.querySelector("#sounddrop").value = "Clock Ticking";
+  });
+
+  const save = () => {
+    localStorage.setItem("dark", document.querySelector("#dark").checked);
+    localStorage.setItem(
+      "sound",
+      !document.querySelector("#sound").checked
+        ? false
+        : document.querySelector("#sounddrop").value
+    );
+    localStorage.setItem("lang", document.querySelector("#lang").value);
+  };
+</script>
