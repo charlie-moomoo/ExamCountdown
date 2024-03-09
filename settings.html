@@ -72,7 +72,7 @@
     localStorage.getItem("sound") != "false"
       ? localStorage.getItem("sound")
       : "Clock Ticking" | "Clock Ticking";
-  document.querySelector("#lang").value = localStorage.getItem("lang");
+  document.querySelector("#lang").value = localStorage.getItem("lang")||"zh";
   setInterval(() => {
     document.querySelector("#sounddrop").disabled =
       !document.querySelector("#sound").checked;
