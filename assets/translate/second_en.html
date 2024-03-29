@@ -63,7 +63,7 @@
       )} Minutes, and ${Math.floor(((seconds % (60 * 60 * 24)) % (60 * 60)) % 60)} Seconds left until The ${examName} Exam.`;
     }
   });
-  if (localStorage.getItem("sound") != "false") {
+  if (localStorage.getItem("sound") != "false"&&localStorage.getItem("sound") != "null"&&localStorage.getItem("sound") != null) {
     setTimeout(() => {
       setInterval(() => {
         var audio = new Audio(
