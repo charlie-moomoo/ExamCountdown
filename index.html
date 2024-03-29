@@ -31,7 +31,7 @@
 <table width="100%" height="100%">
   <tr>
     <td>
-      <iframe width="100%" height="100%" src="/assets/first.html"></iframe>
+      <iframe width="100%" height="100%" src="/assets/second.html"></iframe>
     </td>
   </tr>
 </table>
@@ -43,7 +43,7 @@
     document.querySelector("body").style.backgroundColor = "black";
   }
   if (localStorage.getItem("lang") == "en") {
-    document.querySelector("iframe").src = "/assets/translate/first_en.html";
+    document.querySelector("iframe").src = "/assets/translate/second_en.html";
     var request = new XMLHttpRequest();
     request.open("GET", "/assets/translate/en.json", false);
     request.send(null);
