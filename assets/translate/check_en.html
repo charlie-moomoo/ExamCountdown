@@ -22,19 +22,19 @@
         <h2 id="top">There are</h2>
         <h1 id="countdown">?? Days, ?? Hours, ?? Minutes, and ?? Seconds left until The ? Exam.</h1>
         <h2 id="period">The period for the exam is from ????/??/?? ??:?? to ????/??/?? ??:??.</h2>
-        <!h2 id="link"><a href="https://drive.google.com/file/d/1LQ7FG4IEHjGs7GfsF9R-MC0VD4OH-YXA/view" target="_blank">Exam Scope</a></h2>
+        <!--h2 id="link"><a href="https://drive.google.com/file/d/1LQ7FG4IEHjGs7GfsF9R-MC0VD4OH-YXA/view" target="_blank">Exam Scope</a></h2-->
       </center>
     </td>
   </tr>
 </table>
 <script>
-  const examName = "Second";
-  const timestamps = { start: "1715557800", end: "1715674200" };
+  const examName = "Third";
+  const timestamps = { start: "1718256000", end: "1718262600" };
   /*const timestamps = {
       start: moment().add("10", "seconds").unix(),
       end: moment().add("15", "seconds").unix(),
   }*/
-  document.title = `Countdown For The ${examName} Exam | ExamCountdown`;
+  document.title = `Countdown For The Check Exam | ExamCountdown`;
   //document.querySelector("#top").innerHTML = `距離第${examName}次段考還有`;
   document.querySelector("#period").innerHTML = `The period for the exam is from ${moment
     .unix(timestamps.start)
@@ -44,10 +44,10 @@
   setInterval(() => {
     const now = moment().unix();
     if (now > timestamps.end) {
-      document.querySelector("#top").innerHTML = `The ${examName} Exam`;
+      document.querySelector("#top").innerHTML = `The Check Exam`;
       document.querySelector("#countdown").innerHTML = "Has ended!";
     } else if (now > timestamps.start) {
-      document.querySelector("#top").innerHTML = `The ${examName} Exam has`;
+      document.querySelector("#top").innerHTML = `The Check Exam has`;
       const seconds = timestamps.end - now;
       document.querySelector("#countdown").innerHTML = `${Math.floor(
         seconds / (60 * 60 * 24)
@@ -60,7 +60,7 @@
         seconds / (60 * 60 * 24)
       )} Days, ${Math.floor((seconds % (60 * 60 * 24)) / (60 * 60))} Hours, ${Math.floor(
         ((seconds % (60 * 60 * 24)) % (60 * 60)) / 60
-      )} Minutes, and ${Math.floor(((seconds % (60 * 60 * 24)) % (60 * 60)) % 60)} Seconds left until The ${examName} Exam.`;
+      )} Minutes, and ${Math.floor(((seconds % (60 * 60 * 24)) % (60 * 60)) % 60)} Seconds left until The Check Exam.`;
     }
   });
   if (localStorage.getItem("sound") != "false"&&localStorage.getItem("sound") != "null"&&localStorage.getItem("sound") != null) {
