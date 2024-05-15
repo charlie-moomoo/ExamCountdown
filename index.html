@@ -31,14 +31,14 @@
 <table width="100%" height="100%">
   <tr>
     <td>
-      <iframe width="100%" height="100%" id="third" src="/assets/third.html"></iframe>
+      <iframe width="100%" height="100%" id="check" src="/assets/check.html"></iframe>
     </td>
     <td>
-      <iframe width="100%" height="100%" id="check" src="/assets/check.html"></iframe>
+      <iframe width="100%" height="100%" id="third" src="/assets/third.html"></iframe>
     </td>
   </tr>
 </table>
-<div id="version">ExamCountdown v2.0<br />(C) 2024 CharlieMoomoo</div>
+<div id="version">ExamCountdown v2.0-hotfix<br />(C) 2024 CharlieMoomoo</div>
 <script>
   if (localStorage.getItem("dark") == "true") {
     document.querySelector("#version").style.color = "white";
@@ -46,8 +46,8 @@
     document.querySelector("body").style.backgroundColor = "black";
   }
   if (localStorage.getItem("lang") == "en") {
-    document.querySelector("iframe#third").src = "/assets/translate/third_en.html";
     document.querySelector("iframe#check").src = "/assets/translate/check_en.html";
+    document.querySelector("iframe#third").src = "/assets/translate/third_en.html";
     var request = new XMLHttpRequest();
     request.open("GET", "/assets/translate/en.json", false);
     request.send(null);
