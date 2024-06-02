@@ -20,9 +20,19 @@
     <td>
       <center>
         <h2 id="top">There are</h2>
-        <h1 id="countdown">?? Days, ?? Hours, ?? Minutes, and ?? Seconds left until The ? Exam.</h1>
-        <h2 id="period">The period for the exam is from ????/??/?? ??:?? to ????/??/?? ??:??.</h2>
-        <!--h2 id="link"><a href="https://drive.google.com/file/d/1LQ7FG4IEHjGs7GfsF9R-MC0VD4OH-YXA/view" target="_blank">Exam Scope</a></h2-->
+        <h1 id="countdown">
+          ?? Days, ?? Hours, ?? Minutes, and ?? Seconds left until The ? Exam.
+        </h1>
+        <h2 id="period">
+          The period for the exam is from ????/??/?? ??:?? to ????/??/?? ??:??.
+        </h2>
+        <h2 id="link">
+          <a
+            href="https://drive.google.com/file/d/1WIVjJJZPPbiTiBqd6_S-QfjtKN2krW-w/view"
+            target="_blank"
+            >Exam Scope</a
+          >
+        </h2>
       </center>
     </td>
   </tr>
@@ -36,7 +46,9 @@
   }*/
   document.title = `Countdown For The Check Exam | ExamCountdown`;
   //document.querySelector("#top").innerHTML = `距離第${examName}次段考還有`;
-  document.querySelector("#period").innerHTML = `The period for the exam is from ${moment
+  document.querySelector(
+    "#period"
+  ).innerHTML = `The period for the exam is from ${moment
     .unix(timestamps.start)
     .format("YYYY/MM/DD HH:mm")} to ${moment
     .unix(timestamps.end)
@@ -51,19 +63,31 @@
       const seconds = timestamps.end - now;
       document.querySelector("#countdown").innerHTML = `${Math.floor(
         seconds / (60 * 60 * 24)
-      )} Days, ${Math.floor((seconds % (60 * 60 * 24)) / (60 * 60))} Hours, ${Math.floor(
+      )} Days, ${Math.floor(
+        (seconds % (60 * 60 * 24)) / (60 * 60)
+      )} Hours, ${Math.floor(
         ((seconds % (60 * 60 * 24)) % (60 * 60)) / 60
-      )} Minutes, and ${Math.floor(((seconds % (60 * 60 * 24)) % (60 * 60)) % 60)} Seconds left.`;
+      )} Minutes, and ${Math.floor(
+        ((seconds % (60 * 60 * 24)) % (60 * 60)) % 60
+      )} Seconds left.`;
     } else {
       const seconds = timestamps.start - now;
       document.querySelector("#countdown").innerHTML = `${Math.floor(
         seconds / (60 * 60 * 24)
-      )} Days, ${Math.floor((seconds % (60 * 60 * 24)) / (60 * 60))} Hours, ${Math.floor(
+      )} Days, ${Math.floor(
+        (seconds % (60 * 60 * 24)) / (60 * 60)
+      )} Hours, ${Math.floor(
         ((seconds % (60 * 60 * 24)) % (60 * 60)) / 60
-      )} Minutes, and ${Math.floor(((seconds % (60 * 60 * 24)) % (60 * 60)) % 60)} Seconds left until The Check Exam.`;
+      )} Minutes, and ${Math.floor(
+        ((seconds % (60 * 60 * 24)) % (60 * 60)) % 60
+      )} Seconds left until The Check Exam.`;
     }
   });
-  if (localStorage.getItem("sound") != "false"&&localStorage.getItem("sound") != "null"&&localStorage.getItem("sound") != null) {
+  if (
+    localStorage.getItem("sound") != "false" &&
+    localStorage.getItem("sound") != "null" &&
+    localStorage.getItem("sound") != null
+  ) {
     setTimeout(() => {
       setInterval(() => {
         var audio = new Audio(

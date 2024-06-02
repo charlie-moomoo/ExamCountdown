@@ -1,7 +1,7 @@
 <title>段考倒數計時器 | ExamCountdown</title>
 <script src="https://momentjs.com/downloads/moment.min.js"></script>
 <style type="text/css">
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=試範圍距離第?次段考還有天時分秒期間: /~已結束!還剩下一二三0123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=試範圍距離第?次段考還有天時分秒期間程表: /~已結束!還剩下一二三0123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
   * {
     font-family: "Noto Sans TC", sans-serif;
     overflow: hidden;
@@ -29,7 +29,7 @@
 </table>
 <script>
   const examName = "三";
-  const timestamps = { start: "1719359400", end: "9999999999999999999" };
+  const timestamps = { start: "1719359400", end: "1719543000" };
   /*const timestamps = {
       start: moment().add("10", "seconds").unix(),
       end: moment().add("15", "seconds").unix(),
@@ -38,9 +38,9 @@
   document.querySelector("#top").innerHTML = `距離第${examName}次段考還有`;
   document.querySelector("#period").innerHTML = `段考期間: ${moment
     .unix(timestamps.start)
-    .format("YYYY/MM/DD HH:mm")} ~ 還不知道awa`//${moment
-//    .unix(timestamps.end)
-//    .format("YYYY/MM/DD HH:mm")}`;
+    .format("YYYY/MM/DD HH:mm")} ~ ${moment
+    .unix(timestamps.end)
+    .format("YYYY/MM/DD HH:mm")}`;
   setInterval(() => {
     const now = moment().unix();
     if (now > timestamps.end) {
@@ -63,7 +63,11 @@
       )}分 ${Math.floor(((seconds % (60 * 60 * 24)) % (60 * 60)) % 60)}秒`;
     }
   });
-  if (localStorage.getItem("sound") != "false"&&localStorage.getItem("sound") != "null"&&localStorage.getItem("sound") != null) {
+  if (
+    localStorage.getItem("sound") != "false" &&
+    localStorage.getItem("sound") != "null" &&
+    localStorage.getItem("sound") != null
+  ) {
     setTimeout(() => {
       setInterval(() => {
         var audio = new Audio(

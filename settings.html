@@ -2,7 +2,10 @@
 <link rel="icon" href="/favicon.ico" />
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="bookmark" href="/favicon.ico" />
-<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css"
+/>
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=ExamCountdownv0.123456789()ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz深色模式音效語言中文儲存設定");
   * {
@@ -72,7 +75,7 @@
     localStorage.getItem("sound") != "false"
       ? localStorage.getItem("sound")
       : "Clock Ticking" | "Clock Ticking";
-  document.querySelector("#lang").value = localStorage.getItem("lang")||"zh";
+  document.querySelector("#lang").value = localStorage.getItem("lang") || "zh";
   setInterval(() => {
     document.querySelector("#sounddrop").disabled =
       !document.querySelector("#sound").checked;
