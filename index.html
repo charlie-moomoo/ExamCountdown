@@ -7,7 +7,7 @@
   href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css"
 />
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=ExamCountdownv0.123456789()hrlieMm");
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=ExamCountdownv0.123456789()hrlieMm廣告位招租?");
   * {
     border: 0;
     font-family: "Noto Sans TC", sans-serif;
@@ -37,21 +37,34 @@
       <iframe
         width="100%"
         height="100%"
-        id="check"
-        src="/assets/check.html"
+        id="third"
+        src="/assets/third.html"
       ></iframe>
     </td>
     <td>
       <iframe
         width="100%"
         height="100%"
-        id="third"
-        src="/assets/third.html"
+        id="reviewa"
+        src="/assets/reviewa.html"
       ></iframe>
     </td>
   </tr>
+  <tr>
+    <td>
+      <iframe
+        width="100%"
+        height="100%"
+        id="reviewb"
+        src="/assets/reviewb.html"
+      ></iframe>
+    </td>
+    <td>
+      <div width="100%" height="100%"><center></center></div>
+    </td>
+  </tr>
 </table>
-<div id="version">ExamCountdown v2.1<br />(C) 2024 CharlieMoomoo</div>
+<div id="version">ExamCountdown v2.2<br />(C) 2024 CharlieMoomoo</div>
 <script>
   if (localStorage.getItem("dark") == "true") {
     document.querySelector("#version").style.color = "white";
@@ -59,10 +72,9 @@
     document.querySelector("body").style.backgroundColor = "black";
   }
   if (localStorage.getItem("lang") == "en") {
-    document.querySelector("iframe#check").src =
-      "/assets/translate/check_en.html";
-    document.querySelector("iframe#third").src =
-      "/assets/translate/third_en.html";
+    document.querySelectorAll("iframe").forEach((frame) => {
+      frame.src = `/assets/translate/${frame.id}_en.html`;
+    });
     var request = new XMLHttpRequest();
     request.open("GET", "/assets/translate/en.json", false);
     request.send(null);

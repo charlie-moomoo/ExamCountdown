@@ -1,0 +1,98 @@
+<title>Exam Countdown Timer | ExamCountdown</title>
+<script src="https://momentjs.com/downloads/moment.min.js"></script>
+<style type="text/css">
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=?: /~!0123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+  * {
+    font-family: "Noto Sans TC", sans-serif;
+    overflow: hidden;
+  }
+  a {
+    color: skyblue;
+    text-decoration: none;
+    font-family: "Noto Sans TC", sans-serif;
+  }
+</style>
+<link rel="icon" href="/favicon.ico" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="bookmark" href="/favicon.ico" />
+<table width="100%" height="100%">
+  <tr>
+    <td>
+      <center>
+        <h2 id="top">There are</h2>
+        <h1 id="countdown">
+          ?? Days, ?? Hours, ?? Minutes, and ?? Seconds left until The ? Exam.
+        </h1>
+        <h2 id="period">
+          The period for the exam is from ????/??/?? ??:?? to ????/??/?? ??:??.
+        </h2>
+        <!--h2 id="link"><a href="https://drive.google.com/file/d/1LQ7FG4IEHjGs7GfsF9R-MC0VD4OH-YXA/view" target="_blank">Exam Scope</a></h2-->
+      </center>
+    </td>
+  </tr>
+</table>
+<script>
+  const examName = "Third";
+  const timestamps = { start: "1725206400", end: "1725292799" };
+  /*const timestamps = {
+      start: moment().add("10", "seconds").unix(),
+      end: moment().add("15", "seconds").unix(),
+  }*/
+  document.title = `Countdown For The Review Test B | ExamCountdown`;
+  //document.querySelector("#top").innerHTML = `距離第${examName}次段考還有`;
+  document.querySelector(
+    "#period"
+  ).innerHTML = `The period for the test is from ${moment
+    .unix(timestamps.start)
+    .format("YYYY/MM/DD HH:mm")} to ${moment
+    .unix(timestamps.end)
+    .format("YYYY/MM/DD HH:mm")}.`;
+  setInterval(() => {
+    const now = moment().unix();
+    if (now > timestamps.end) {
+      document.querySelector("#top").innerHTML = `The Review Test B`;
+      document.querySelector("#countdown").innerHTML = "Has ended!";
+    } else if (now > timestamps.start) {
+      document.querySelector("#top").innerHTML = `The Review Test B has`;
+      const seconds = timestamps.end - now;
+      document.querySelector("#countdown").innerHTML = `${Math.floor(
+        seconds / (60 * 60 * 24)
+      )} Days, ${Math.floor(
+        (seconds % (60 * 60 * 24)) / (60 * 60)
+      )} Hours, ${Math.floor(
+        ((seconds % (60 * 60 * 24)) % (60 * 60)) / 60
+      )} Minutes, and ${Math.floor(
+        ((seconds % (60 * 60 * 24)) % (60 * 60)) % 60
+      )} Seconds left.`;
+    } else {
+      const seconds = timestamps.start - now;
+      document.querySelector("#countdown").innerHTML = `${Math.floor(
+        seconds / (60 * 60 * 24)
+      )} Days, ${Math.floor(
+        (seconds % (60 * 60 * 24)) / (60 * 60)
+      )} Hours, ${Math.floor(
+        ((seconds % (60 * 60 * 24)) % (60 * 60)) / 60
+      )} Minutes, and ${Math.floor(
+        ((seconds % (60 * 60 * 24)) % (60 * 60)) % 60
+      )} Seconds left until The Review Test B.`;
+    }
+  });
+  if (
+    localStorage.getItem("sound") != "false" &&
+    localStorage.getItem("sound") != "null" &&
+    localStorage.getItem("sound") != null
+  ) {
+    setTimeout(() => {
+      setInterval(() => {
+        var audio = new Audio(
+          `/assets/sound/${localStorage.getItem("sound")}.mp3`
+        );
+        audio.play();
+      }, 1000);
+    }, 1000 - new Date().getMilliseconds());
+  }
+  if (localStorage.getItem("dark") == "true") {
+    document.querySelector("body").style.backgroundColor = "black";
+    document.querySelector("body").style.color = "white";
+  }
+</script>

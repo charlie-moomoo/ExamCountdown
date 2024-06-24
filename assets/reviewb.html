@@ -1,7 +1,7 @@
 <title>段考倒數計時器 | ExamCountdown</title>
 <script src="https://momentjs.com/downloads/moment.min.js"></script>
 <style type="text/css">
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=試範圍距離第?次段考還有天時分秒期間: /~已結束!還剩下一二三0123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=試範圍距離第?次段考還有天時分秒期間程表: /~已結束!還剩下一二三0123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
   * {
     font-family: "Noto Sans TC", sans-serif;
     overflow: hidden;
@@ -22,26 +22,20 @@
         <h2 id="top">距離第?次段考還有</h2>
         <h1 id="countdown">??天 ??時 ??分 ??秒</h1>
         <h2 id="period">段考期間: ????/??/?? ??:??~????/??/?? ??:??</h2>
-        <h2 id="link">
-          <a
-            href="https://drive.google.com/file/d/1WIVjJJZPPbiTiBqd6_S-QfjtKN2krW-w/view"
-            target="_blank"
-            >考試範圍</a
-          >
-        </h2>
+        <!--h2 id="link"><a href="https://drive.google.com/file/d/1LQ7FG4IEHjGs7GfsF9R-MC0VD4OH-YXA/view" target="_blank">考試範圍</a></h2-->
       </center>
     </td>
   </tr>
 </table>
 <script>
-  const examName = "二";
-  const timestamps = { start: "1718256000", end: "1718262600" };
+  const examName = "三";
+  const timestamps = { start: "1725206400", end: "1725292799" };
   /*const timestamps = {
       start: moment().add("10", "seconds").unix(),
       end: moment().add("15", "seconds").unix(),
   }*/
-  document.title = `檢核考倒數計時 | ExamCountdown`;
-  document.querySelector("#top").innerHTML = `距離檢核考還有`;
+  document.title = `複習考B倒數計時 | ExamCountdown`;
+  document.querySelector("#top").innerHTML = `距離複習考B還有`;
   document.querySelector("#period").innerHTML = `考試期間: ${moment
     .unix(timestamps.start)
     .format("YYYY/MM/DD HH:mm")} ~ ${moment
@@ -50,10 +44,10 @@
   setInterval(() => {
     const now = moment().unix();
     if (now > timestamps.end) {
-      document.querySelector("#top").innerHTML = `檢核考`;
+      document.querySelector("#top").innerHTML = `複習考B`;
       document.querySelector("#countdown").innerHTML = "已結束!";
     } else if (now > timestamps.start) {
-      document.querySelector("#top").innerHTML = `檢核考還剩下`;
+      document.querySelector("#top").innerHTML = `複習考B還剩下`;
       const seconds = timestamps.end - now;
       document.querySelector("#countdown").innerHTML = `${Math.floor(
         seconds / (60 * 60 * 24)
