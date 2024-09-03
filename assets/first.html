@@ -1,7 +1,7 @@
 <title>段考倒數計時器 | ExamCountdown</title>
 <script src="https://momentjs.com/downloads/moment.min.js"></script>
 <style type="text/css">
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=試範圍距離第?次段考還有天時分秒期間程表: /~已結束!還剩下一二三0123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap&text=試範圍距離第?次段考還有天時分秒期間: /~已結束!還剩下一二三0123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
   * {
     font-family: "Noto Sans TC", sans-serif;
     overflow: hidden;
@@ -28,15 +28,15 @@
   </tr>
 </table>
 <script>
-  const examName = "三";
-  const timestamps = { start: "1725206400", end: "1725292799" };
+  const examName = "一";
+  const timestamps = { start: "1728949800", end: "1729066200" };
   /*const timestamps = {
       start: moment().add("10", "seconds").unix(),
       end: moment().add("15", "seconds").unix(),
   }*/
-  document.title = `複習考B倒數計時 | ExamCountdown`;
-  document.querySelector("#top").innerHTML = `距離複習考B還有`;
-  document.querySelector("#period").innerHTML = `考試期間: ${moment
+  document.title = `第${examName}次段考倒數計時 | ExamCountdown`;
+  document.querySelector("#top").innerHTML = `距離第${examName}次段考還有`;
+  document.querySelector("#period").innerHTML = `段考期間: ${moment
     .unix(timestamps.start)
     .format("YYYY/MM/DD HH:mm")} ~ ${moment
     .unix(timestamps.end)
@@ -44,10 +44,10 @@
   setInterval(() => {
     const now = moment().unix();
     if (now > timestamps.end) {
-      document.querySelector("#top").innerHTML = `複習考B`;
+      document.querySelector("#top").innerHTML = `第${examName}次段考`;
       document.querySelector("#countdown").innerHTML = "已結束!";
     } else if (now > timestamps.start) {
-      document.querySelector("#top").innerHTML = `複習考B還剩下`;
+      document.querySelector("#top").innerHTML = `第${examName}次段考還剩下`;
       const seconds = timestamps.end - now;
       document.querySelector("#countdown").innerHTML = `${Math.floor(
         seconds / (60 * 60 * 24)
@@ -63,11 +63,7 @@
       )}分 ${Math.floor(((seconds % (60 * 60 * 24)) % (60 * 60)) % 60)}秒`;
     }
   });
-  if (
-    localStorage.getItem("sound") != "false" &&
-    localStorage.getItem("sound") != "null" &&
-    localStorage.getItem("sound") != null
-  ) {
+  if (localStorage.getItem("sound") != "false"&&localStorage.getItem("sound") != "null"&&localStorage.getItem("sound") != null) {
     setTimeout(() => {
       setInterval(() => {
         var audio = new Audio(
